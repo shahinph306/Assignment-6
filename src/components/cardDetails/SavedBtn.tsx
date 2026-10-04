@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useContext } from 'react';
 import { PlanContext } from "@/context/PlanContext";
@@ -7,6 +6,7 @@ import { toast } from 'react-toastify';
 
 const SaveBtn = ({ workout }: { workout: Workout }) => {
   const { savedPlan, setSavedPlan } = useContext(PlanContext);
+
 
   const isAlreadySaved = savedPlan.some(
     (item) => String(item.id) === String(workout.id)
@@ -32,7 +32,7 @@ const SaveBtn = ({ workout }: { workout: Workout }) => {
           : 'bg-gray-800 text-white hover:bg-gray-700'
       }`}
     >
-      {isAlreadySaved ? '✓ In Saved' : 'Add to Saved'}
+      Add to Saved 
     </button>
   );
 };
