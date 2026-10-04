@@ -7,12 +7,11 @@ export default function NotFound() {
 
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-16 bg-gray-950 text-white">
-      {/* 404 Big Number */}
+      
       <h1 className="text-[8rem] sm:text-[10rem] font-black text-gray-800 leading-none select-none">
         404
       </h1>
 
-      {/* Message */}
       <div className="text-center -mt-8 sm:-mt-12 space-y-4 max-w-md">
         <h2 className="text-2xl sm:text-3xl font-bold text-yellow-400">
           Page Not Found
@@ -22,7 +21,7 @@ export default function NotFound() {
         </p>
       </div>
 
-      {/* Buttons */}
+    
       <div className="mt-10 flex flex-col sm:flex-row gap-4">
         <Link
           href="/"
@@ -38,7 +37,7 @@ export default function NotFound() {
         </Link>
       </div>
 
-      {/* Quick Tip */}
+  
       <p className="mt-12 text-gray-500 text-sm text-center">
         If you think this is an error, go back and try again.
       </p>
