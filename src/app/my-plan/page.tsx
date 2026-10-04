@@ -19,7 +19,6 @@ const PlanedCard = () => {
         addToPlan, removeFromSaved
     } = useContext(PlanContext);
 
-    // হিসাব
     const todayStats = useMemo(() => ({
         exercises: todayPlan.length,
         minutes: todayPlan.reduce((s, w) => s + (Number(w.duration) || 0), 0),
@@ -49,7 +48,6 @@ const PlanedCard = () => {
         alreadyInPlan: (n: string) => toast.info(`ℹ️ "${n}" is already in your plan`, { theme: 'dark', autoClose: 2500, position: 'top-right' }),
     };
 
-    // কার্ড কমন
     const renderCard = (w: Workout, isToday: boolean) => {
         const isInPlan = todayPlan.some(item => item.id === w.id);
 
@@ -68,7 +66,7 @@ const PlanedCard = () => {
                     </div>
                 </div>
                 <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
-                    {/* ✅ View Details বাটন ঠিক করা */}
+                   
                     <Link
                         href={`/workout/${w.id}`}
                         className="px-3 py-1.5 bg-gray-800 rounded-lg text-sm hover:bg-gray-700 transition whitespace-nowrap"
@@ -93,23 +91,7 @@ const PlanedCard = () => {
                         </>
                     ) : (
                         <>
-                            <button
-                                onClick={() => {
-                                    if (isInPlan) {
-                                        t.alreadyInPlan(w.name);
-                                        return;
-                                    }
-                                    addToPlan(w);
-                                    t.addPlan(w.name);
-                                }}
-                                disabled={isInPlan}
-                                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition whitespace-nowrap ${isInPlan
-                                        ? 'bg-gray-700 text-gray-400 cursor-not-allowed opacity-60'
-                                        : 'bg-green-500 text-black hover:bg-green-400'
-                                    }`}
-                            >
-                                {isInPlan ? '✓ In Plan' : 'Add to Plan'}
-                            </button>
+                            
                             <button
                                 onClick={() => { removeFromSaved(w.id); t.remSaved(w.name); }}
                                 className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-700 text-gray-400 hover:text-white hover:border-red-500 transition-all text-lg"
@@ -123,7 +105,7 @@ const PlanedCard = () => {
         );
     };
 
-    // ✅ Empty State Component
+
     const renderEmptyState = () => (
         <div className="bg-gray-900/50 rounded-xl border border-gray-800 py-12 px-6 text-center">
             <h3 className="text-white font-bold text-2xl uppercase mb-2">NOTHING HERE YET</h3>
@@ -149,7 +131,7 @@ const PlanedCard = () => {
                     <p className="text-gray-400 text-sm">Cap of five lifts for today. Finish them, then load more.</p>
                 </div>
 
-                {/* স্ট্যাটিসটিক্স */}
+            
                 <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6 bg-gray-900/50 rounded-xl p-4 sm:p-5 border border-gray-800">
                     <div>
                         <p className="text-gray-400 text-xs sm:text-sm">Exercises</p>
@@ -167,7 +149,7 @@ const PlanedCard = () => {
                     </div>
                 </div>
 
-                {/* ট্যাব + Sort */}
+               
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
                     <div className="flex gap-2">
                         <button
@@ -203,7 +185,6 @@ const PlanedCard = () => {
                     </div>
                 </div>
 
-                {/* কার্ড বা Empty State */}
                 <div className="space-y-3 sm:space-y-4">
                     {activeTab === 'today' ? (
                         sortedToday.length > 0
